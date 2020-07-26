@@ -7,7 +7,7 @@ help: ## Shows help.
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 init: ## Initialization: Symblinks kong-pongo's executable to host's path.
-	sudo rm /usr/local/bin/pongo; sudo ln -s $(realpath kong-pongo/pongo.sh) /usr/local/bin/pongo
+	sudo rm -rf /usr/local/bin/pongo; sudo ln -s $(realpath kong-pongo/pongo.sh) /usr/local/bin/pongo
 
 lint: ## Runs linters for all kong plugins.
 	find kong-plugins/* -maxdepth 0 -type d -print0 | xargs -0 -L1 bash -c 'cd "$$0" && pongo lint'
