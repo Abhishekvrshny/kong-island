@@ -1,0 +1,10 @@
+dist: bionic
+
+jobs:
+  include:
+  - stage: "init"
+    script: make init
+  - stage: "lint"
+    script: make lint
+  - stage: test
+    script: make test

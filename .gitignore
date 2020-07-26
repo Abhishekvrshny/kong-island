@@ -1,0 +1,8 @@
+# servroot is typically the nginx/Kong workingdirectory when testing
+**/servroot
+
+# packed distribution format for LuaRocks
+**/.rock
+
+# copied plugins in test directory for integration tests
+test/kong
