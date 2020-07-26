@@ -2,9 +2,9 @@ dist: bionic
 
 jobs:
   include:
-  - stage: "init"
-    script: make init
-  - stage: "lint"
-    script: make lint
-  - stage: test
-    script: make test
+          - name: kong
+
+script:
+- make init
+- make lint
+- make test
