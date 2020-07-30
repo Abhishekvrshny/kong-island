@@ -2,12 +2,22 @@
 dev-test setup for kong, the cloud-native API gateway.
 
 # Description
-This setup helps to develop and test multiple kong plugins. It uses [kong-pongo](https://github.com/Kong/kong-pongo)
+This setup helps to develop and test multiple kong plugins. It uses [kong-pongo](https://github.com/Kong/kong-pongo) to run tests against the plugins and [konga](https://github.com/pantsel/konga) for dashboard.
 
-The repo has the following modules:
+# Features
+1. Setup to develop and test multiple kong plugins locally.
+2. Public kong plugins can be submoduled and used.
+3. Supports running tests on individual plugins using `kong-pongo`
+4. Supports running integration tests across multiple plugins, again using `kong-pongo`.
+5. Pre-seeded `konga` configuration for local dashboard access.
+6. Build deployable custom `kong` image with plugins configured.
+7. Easy `make` targets for the functionalities defined.
+
+# Directories
+The repo has the following important directories:
 
 - [kong-plugins](https://github.com/Abhishekvrshny/kong-island/tree/master/kong-plugins): This is a repository of all kong custom plugins. Some of them can be `submodule`d from other public git repositories.
-- [kong-pongo](https://github.com/Kong/kong-pongo/tree/020f6cd2057052689059867250d54af2854fe208): This is a tool to run plugin tests with Kong.
+- [kong-pongo](https://github.com/Kong/kong-pongo): Tooling to run plugin tests with Kong.
 
 # Setup
 Clone master branch  with submodules
@@ -29,12 +39,15 @@ Initialize using make
 ```sh
 make init # This will make pongo executable available in your host's path.
 make help # This will print all available make targets.
-# down                           Brings down kong, cassandra and konga
-# help                           Shows help.
-# init                           Initialization: Symblinks kong-pongo's executable to host's path.
-# lint                           Runs linters for all kong plugins.
-# test                           Runs tests for all kong plugins.
-# up                             Brings up kong, cassandra and konga
+down                           Brings down kong, cassandra and konga
+help                           Shows help.
+init                           Initialization: Symblinks kong-pongo's executable to host's path.
+lint                           Runs linters for all kong plugins.
+test-clean                     Cleans test setup
+test-each                      Runs individual tests for each kong plugin.
+test-integration               Runs integration tests across all kong plugins.
+test                           Runs all tests for all kong plugins.
+up                             Brings up kong, cassandra and konga
 ```
 
 Export `KONG_VERSION` environment variable. The version is mentioned in `Makefile`
