@@ -12,6 +12,7 @@ This setup helps to develop and test multiple kong plugins. It uses [kong-pongo]
 5. Pre-seeded `konga` configuration for local dashboard access.
 6. Build deployable custom `kong` image with plugins configured.
 7. Easy `make` targets for the functionalities defined.
+8. `Dockerfile` can be used to build kong image with custom plugins.
 
 # Directories
 The repo has the following important directories:
