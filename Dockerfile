@@ -1,4 +1,4 @@
-FROM kong:2.0.3
+FROM kong:2.6.0
 
 # Set timezone.
 USER root
