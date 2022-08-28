@@ -72,7 +72,3 @@ services:
       - ./konga:/konga:ro
     depends_on:
       - kong
-networks:
-  default:
-    external:
-      name: ${PONGO_NETWORK}
