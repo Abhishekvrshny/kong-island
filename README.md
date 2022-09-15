@@ -127,18 +127,9 @@ kong reload
 
 ## Enabling the plugin
 
-Right now, the steps to enable a plugin in the `kong-island` container image are manual. This is not automated, as of now, as number of plugins are handful.
-
 Edit the `kong.conf` configuration file to make the following changes
 
-1. Add plugin path in `lua_package_path` as semi-colon separated values. **Notice** double semi-colons in the end.
-
-```
-lua_package_path=/kong-plugins/kong-plugin/?.lua;;
-```
-`kong-plugin` here is the name of the plugin.
-
-2. Add the plugin in `plugins` as comma-separated values
+1. Add the plugin in `plugins` as comma-separated values
 
 ```
 plugins=myplugin

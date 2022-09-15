@@ -11,3 +11,7 @@ RUN mkdir -p /usr/local/kong/kong-plugins
 WORKDIR /usr/local/kong/kong-plugins
 ADD kong-plugins /usr/local/kong/kong-plugins
 ADD kong.conf /etc/kong/kong.conf
+
+# Install the plugins
+RUN cd /usr/local/kong/kong-plugins
+RUN for dir in `ls`; do if [ -d $dir ]; then cd $dir; luarocks make; cd ../; fi done
