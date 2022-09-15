@@ -28,6 +28,8 @@ test-each: ## Runs individual tests for each kong plugin.
 
 test-clean: ## Cleans test setup
 	rm -rf ./test/kong
+	find kong-plugins/* -maxdepth 0 -type d -print0 | xargs -0 -L1 bash -c 'cd "$$0" && pongo down'
+	cd ./test && pongo down
 
 test: test-each test-integration test-clean ## Runs all tests for all kong plugins.
 
