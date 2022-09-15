@@ -6,6 +6,3 @@
 	path = kong-plugins/kong-plugin
 	url = https://github.com/Kong/kong-plugin.git
 	branch = master
-[submodule "kong-plugins/kong-plugin-uppercase-response"]
-	path = kong-plugins/kong-plugin-uppercase-response
-	url = https://github.com/Kong/kong-plugin-uppercase-response.git
