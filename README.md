@@ -134,3 +134,6 @@ Edit the `kong.conf` configuration file to make the following changes
 ```
 plugins=myplugin
 ```
+
+## Demo Video
+[https://www.youtube.com/watch?v=YyRvzT6ng9U](https://www.youtube.com/watch?v=YyRvzT6ng9U)
