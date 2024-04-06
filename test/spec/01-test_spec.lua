@@ -1,6 +1,6 @@
 local helpers = require "spec.helpers"
 
-for _, strategy in helpers.each_strategy() do
+for _, strategy in helpers.each_strategy() do if strategy ~= "cassandra" then
   describe(": (access) [#" .. strategy .. "]", function()
     local client
 
@@ -56,4 +56,4 @@ for _, strategy in helpers.each_strategy() do
     end)
   end)
 
-end
+end end

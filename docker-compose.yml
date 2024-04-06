@@ -6,9 +6,10 @@ services:
       dockerfile: Dockerfile
     container_name: kong-island-migrations-bootstrap
     environment:
-      - KONG_DATABASE=cassandra
-      - KONG_CASSANDRA_KEYSPACE=kong_island
-      - KONG_CASSANDRA_CONTACT_POINTS=cassandra
+      - KONG_DATABASE=postgres
+      - KONG_PG_HOST=postgres
+      - KONG_PG_DATABASE=kong_tests
+      - KONG_PG_PORT=5432
       - KONG_ADMIN_LISTEN=0.0.0.0:8001 reuseport backlog=16384, 0.0.0.0:8444 http2 ssl reuseport backlog=16384
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8001"]
@@ -23,9 +24,10 @@ services:
       dockerfile: Dockerfile
     container_name: kong-island-migrations-up
     environment:
-      - KONG_DATABASE=cassandra
-      - KONG_CASSANDRA_KEYSPACE=kong_island
-      - KONG_CASSANDRA_CONTACT_POINTS=cassandra
+      - KONG_DATABASE=postgres
+      - KONG_PG_HOST=postgres
+      - KONG_PG_DATABASE=kong_tests
+      - KONG_PG_PORT=5432
       - KONG_ADMIN_LISTEN=0.0.0.0:8001 reuseport backlog=16384, 0.0.0.0:8444 http2 ssl reuseport backlog=16384
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8001"]
@@ -44,11 +46,13 @@ services:
     ports:
       - "8000:8000"
       - "8001:8001"
+      - "8002:8002"
       - "8443:8443"
     environment:
-      - KONG_DATABASE=cassandra
-      - KONG_CASSANDRA_KEYSPACE=kong_island
-      - KONG_CASSANDRA_CONTACT_POINTS=cassandra
+      - KONG_DATABASE=postgres
+      - KONG_PG_HOST=postgres
+      - KONG_PG_DATABASE=kong_tests
+      - KONG_PG_PORT=5432
       - KONG_ADMIN_LISTEN=0.0.0.0:8001 reuseport backlog=16384, 0.0.0.0:8444 http2 ssl reuseport backlog=16384
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8001"]

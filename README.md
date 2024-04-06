@@ -39,6 +39,10 @@ git submodule update
 Initialize using make
 ```sh
 make init # This will make pongo executable available in your host's path.
+```
+
+List all other options
+```sh
 make help # This will print all available make targets.
 down                           Brings down kong, cassandra and konga
 help                           Shows help.
@@ -60,6 +64,16 @@ To change `KONG_VERSION`
 1. Change `KONG_VERSION` in `Makefile`
 2. Export the updated `KONG_VERSION` environment variable.
 3. Update the kong image version in Dockerfile i.e `FROM kong:2.0.x`
+
+Make the following changes to `kong-pongo/assets/docker-compose.yml` till this [issue](https://github.com/Kong/kong-pongo/issues/333) is fixed.
+```
+  kong:
+    image: ${KONG_TEST_IMAGE:-ignore_if_not_provided}
+   ...
+    volumes:
+       - ${PONGO_WD}:/kong-plugin
++      - /tmp/kong-plugin:/kong-plugin/servroot
+```
  
 Bring up kong, cassandra and konga
 ```sh
