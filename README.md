@@ -13,6 +13,7 @@ This setup helps to develop and test multiple kong plugins. It uses [kong-pongo]
 6. Build deployable custom `kong` image with plugins configured.
 7. Easy `make` targets for the functionalities defined.
 8. `Dockerfile` can be used to build kong image with custom plugins.
+9. [New] Support for [kong manager](https://docs.konghq.com/gateway/latest/kong-manager/) dashboard.
 
 # Directories
 The repo has the following important directories:
@@ -81,6 +82,7 @@ make up
 # Access kong at http://127.0.0.1:8000/
 # Access kong admin API at http://127.0.0.1:8001/
 # Access konga at http://127.0.0.1:1337/ 
+# Access kong manager at http://127.0.0.1:8002/
 # Default user credentials for konga: root/root123
 ```
 
@@ -149,5 +151,16 @@ Edit the `kong.conf` configuration file to make the following changes
 plugins=myplugin
 ```
 
-## Demo Video
+# Plugin tests
+`kong-island` support writing and executing 2 types of tests: plugin tests and E2E intehration tests.
+
+## Plugin Tests
+Plugin tests are placed within the plugin directory, eg [tests for myplugin](https://github.com/Kong/kong-plugin/tree/d0803a76f2c9e30af1233187a41a45ecfdaeb29f/spec/myplugin). `make test-each` runs plugin tests for all plugins one by one.
+
+## Integration Tests
+Integration tests are placed under [tests](https://github.com/Abhishekvrshny/kong-island/tree/master/test) directory. Integration tests can be used kong behaviour across multiple plugins. `make test-integration` can be used to run integration tests.
+
+`make test` runs all types of tests ie both plugin and integration tests for all plugins.
+
+# Demo Video
 [https://www.youtube.com/watch?v=YyRvzT6ng9U](https://www.youtube.com/watch?v=YyRvzT6ng9U)
